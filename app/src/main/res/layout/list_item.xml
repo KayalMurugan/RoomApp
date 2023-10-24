@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="rooms"
+            type="com.task.roomapp.model.Rooms" />
+
+
+    </data>
+    <RelativeLayout
+        android:id="@+id/roomsRLView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ImgRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_8dp"
+            android:layout_margin="@dimen/dimen_8dp"
+            app:cardCornerRadius="@dimen/dimen_10dp"
+            app:cardBackgroundColor="@color/cancel">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_210dp"
+                >
+
+                <TextView
+                    android:id="@+id/liveTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/dimen_8dp"
+                    android:layout_marginTop="@dimen/dimen_8dp"
+                    android:layout_marginEnd="@dimen/dimen_8dp"
+                    android:layout_marginBottom="@dimen/dimen_8dp"
+                    android:background="@color/live"
+                    android:paddingStart="@dimen/dimen_8dp"
+                    android:paddingTop="@dimen/dimen_2dp"
+                    android:paddingEnd="@dimen/dimen_8dp"
+                    android:visibility="@{rooms.live? View.VISIBLE : View.GONE}"
+                    android:paddingBottom="@dimen/dimen_2dp"
+                    android:textColor="@color/white"
+                    android:text="@string/live" />
+
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/dataLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImgRL"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/roomsTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_8dp"
+                android:textColor="@color/room"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_weight="1"
+                android:text="@{rooms.name}" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8dp"
+                android:layout_marginTop="@dimen/dimen_8dp"
+                android:layout_marginEnd="@dimen/dimen_8dp"
+                android:layout_marginBottom="@dimen/dimen_8dp"
+                android:textColor="@color/room"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:utcTime="@{rooms.utcTimestamp}" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/room"
+            android:layout_below="@id/dataLL"
+            android:layout_margin="@dimen/dimen_8dp"/>
+    </RelativeLayout>
+
+</layout>
